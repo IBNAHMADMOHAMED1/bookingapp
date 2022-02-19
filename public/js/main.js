@@ -1,3 +1,8 @@
+
+
+
+
+
 function initParadoxWay() {
     "use strict";
    

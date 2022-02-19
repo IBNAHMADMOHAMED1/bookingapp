@@ -34,7 +34,7 @@
 
 
     <!-- style css -->
-    <link rel="stylesheet" href="../public/assets/style.css">
+    <link rel="stylesheet" href="./public/assets/style.css">
 </head>
 
 <body data-bs-spy="scrol" data-bs-target=".navbar">
@@ -43,7 +43,7 @@
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="../image/Logo.png" alt="" srcset="" class="img-fluid">
+                    <img src="./image/Logo.png" alt="" srcset="" class="img-fluid">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,10 +57,10 @@
                             <a class="nav-link active" aria-current="page" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Réservations</a>
+                            <a class="nav-link" href="<?php BASE_URL;?>reservation">Réservations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="<?php BASE_URL?>profile">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
@@ -85,17 +85,17 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="home-banner home-banner-1">
-                        <img src="/image/homebg.png" alt="">
+                        <img src="./image/homebg.png" alt="">
                         <div class="home-banner-text">
                             <h1>Envolez-vous vers <span>L'Europe</span></h1>
                             <h2>-50% Réduction pour ce vols</h2>
-                            <a href="" class="btn btn-danger text-uppercase mt-4">EN SAVOIR PLUS</a>
+                            <a href="<?php BASE_URL;?>reservation" class="btn btn-danger text-uppercase mt-4">EN SAVOIR PLUS</a>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="home-banner home-banner-2">
-                        <img src="/image/hom2.png" alt="">
+                        <img src="./image/hom2.png" alt="">
                         <div class="home-banner-text">
                             <h1>Envolez-vous vers Asie</h1>
                             <h2>-30% Réduction pour ce vols</h2>
@@ -129,7 +129,7 @@
                             <div class="offer-box text-center position-relative">
                                 <div class="offer-inner">
                                     <div class="offer-image position-relative overflow-hidden">
-                                        <img src="/image/paris.jpg" class="img-fluid" alt="" srcset="">
+                                        <img src="./image/paris.jpg" class="img-fluid" alt="" srcset="">
                                         <div class="offer-overlay">
 
                                         </div>
@@ -153,7 +153,7 @@
                             <div class="offer-box text-center position-relative mb-4 mb-sm-0 mb-lg-0">
                                 <div class="offer-inner">
                                     <div class="offer-image position-relative overflow-hidden">
-                                        <img src="/image/dubai1.jpg" class="img-fluid" alt="" srcset="">
+                                        <img src="./image/dubai1.jpg" class="img-fluid" alt="" srcset="">
                                         <div class="offer-overlay">
 
                                         </div>
@@ -174,7 +174,7 @@
                             <div class="offer-box text-center position-relative">
                                 <div class="offer-inner">
                                     <div class="offer-image position-relative overflow-hidden ">
-                                        <img src="/image/dubai1.jpg" class="img-fluid" alt="" srcset="">
+                                        <img src="./image/dubai1.jpg" class="img-fluid" alt="" srcset="">
                                         <div class="offer-overlay">
 
                                         </div>
@@ -199,7 +199,7 @@
                             <div class="offer-box text-center position-relative">
                                 <div class="offer-inner">
                                     <div class="offer-image position-relative overflow-hidden">
-                                        <img src="/image/paris.jpg" class="img-fluid" alt="" srcset="">
+                                        <img src="./image/paris.jpg" class="img-fluid" alt="" srcset="">
                                         <div class="offer-overlay">
 
                                         </div>
@@ -243,7 +243,7 @@
             </div>
         </div>
         <div class="image-section">
-            <img src="/image/balis.jpg" alt="" srcset="">
+            <img src="./image/balis.jpg" alt="" srcset="">
         </div>
         <div class="social">
             <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -271,7 +271,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="testi-item">
-                            <div class="testi-avatar"><img src="/image/clinet1.png"></div>
+                            <div class="testi-avatar"><img src="./image/clinet1.png"></div>
                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                             <div class="testimonials-text">
                                 <div class="listing-rating">
@@ -295,7 +295,7 @@
                     <!--second--->
                     <div class="swiper-slide">
                         <div class="testi-item">
-                            <div class="testi-avatar"><img src="/image/clinet1.png"></div>
+                            <div class="testi-avatar"><img src="./image/clinet1.png"></div>
                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                             <div class="testimonials-text">
                                 <div class="listing-rating">
@@ -319,7 +319,7 @@
 
                     <div class="swiper-slide">
                         <div class="testi-item">
-                            <div class="testi-avatar"><img src="/image/clinet1.png"></div>
+                            <div class="testi-avatar"><img src="./image/clinet1.png"></div>
                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                             <div class="testimonials-text">
                                 <div class="listing-rating">
@@ -343,7 +343,7 @@
                     <!--fourth-->
                     <div class="swiper-slide">
                         <div class="testi-item">
-                            <div class="testi-avatar"><img src="/image/clinet1.png"></div>
+                            <div class="testi-avatar"><img src="./image/clinet1.png"></div>
                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                             <div class="testimonials-text">
                                 <div class="listing-rating">
@@ -425,7 +425,7 @@
         </form>
 
         <div>
-          <img src = "/image/contact-png.png" alt = "">
+          <img src = "./image/contact-png.png" alt = "">
         </div>
       </div>
     </div>
@@ -445,6 +445,6 @@
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
-  <script src="/public/js/main.js"></script>
+  <script src="./public/js/main.js"></script>
 </body>
 </html>
