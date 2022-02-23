@@ -31,6 +31,39 @@
    background-color: var(--blue);
 }
 
+#header .fixed-top
+{
+
+    box-shadow: 0px 7px 4px #CDD8FF;
+
+}
+#header .nav-item .nav-link{
+    color: var(--text-black);
+    padding: 0.5rem 1rem;
+    align-items: center;
+    /* background-color: #f63440; */
+
+}
+
+.navbar-toggler-icon {
+    color: #f63440;
+  }
+
+  #header .nav-item .nav-link:hover,
+  #header .nav-item .nav-link.active{
+      color: var(--bg-danger);
+  }
+  #header .navbar-toggler-icon{
+      color: #5C7AEA;
+      width: unset;
+      height: unset;
+  } 
+
+  #header .navbar-toggler-icon:focus
+  {
+      box-shadow: none;
+  }
+
 .btn,
 .delete-btn{
    width: 100%;

@@ -1,3 +1,16 @@
+
+
+<?php 
+if (isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true ) {
+} else {
+  Redirect::to('login');
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

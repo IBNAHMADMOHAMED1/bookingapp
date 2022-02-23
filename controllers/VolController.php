@@ -56,32 +56,44 @@ class VolController
 			);
 			
 			$vol = vol::getVol($data);
+			// extract($vol);
+			// die(print_r($vol));
 			return $vol;
+
 		}
 	}
 	public function updateVol()
 	{
-		// if(isset($_POST['submit']))
-		// {
-		// 	$data = array(
-		// 		'idVol' => $_POST['idVol'],
-		// 		'airlines' => $_POST['airlines'],
-		// 		'numvol' => $_POST['numvol'],
-		// 		'depart' => $_POST['depart'],
-		// 		'destination' => $_POST['destination'],
-		// 		'HeurDepart' => $_POST['HeurDepart'],
-		// 		'HeurDarrivée' => $_POST['HeurDarrivée'],
-		// 		'numberPlac' => $_POST['numberPlac'],
-        //         'prix' => $_POST['prix'],
-		// 		'class' => $_POST['statut'],
-		// 	);
-		// 	$idVol=$_POST['id'];
-		// 	die(print_r($data));
-		// 	$result = vol::update($data,$idVol);
+		// die(print_r($_POST));
+		if(isset($_POST['submit']))
+		{
+			$data = array(
+				'idVol' => $_POST['idVol'],
+				'airlines' => $_POST['airlines'],
+				'numvol' => $_POST['numvol'],
+				'depart' => $_POST['depart'],
+				'destination' => $_POST['destination'],
+				'HeurDepart' => $_POST['HeurDepart'],
+				'HeurDarrivée' => $_POST['HeurDarrivée'],
+				'numberPlac' => $_POST['numberPlac'],
+                'prix' => $_POST['prix'],
+				'class' => $_POST['statut'],
+			);
+			// die(print_r($data));
+			$result = vol::update($data);
+			// extract($result);
+			// die(print_r(extract($result)));
             
-		// }
+		}
 	}
-   
 
-
+	public function search($search)
+	{
+		$data = array('find' => $search);
+		$Vols = vol::searchVol($data);
+		// die(print_r($Vols));
+		return $Vols;
+	} 
+	
 }
+?>

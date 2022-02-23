@@ -10,7 +10,7 @@ class Vol
         $stmt->execute();
         return $stmt->fetchAll();
         // $stmt->close();
-        $stmt=null;
+        // $stmt=null;
     }
 
 
@@ -49,7 +49,7 @@ class Vol
 			return 'error';
 		}
         
-        $stmt = null;
+        // $stmt = null;
     }
 
     static public function delete($idVol)
@@ -66,26 +66,27 @@ class Vol
        else{
            return  'Error';
        } 
-       $stmt = null;
+    //    $stmt = null;
      }
 
-     static public function getVol($idVol)
+     static public function getVol($data)
      {
-       
+            $id=$data['idVol'];
 			$query = "SELECT * FROM vols WHERE idVol=?";
             
 			$stmt = DB::connect()->prepare('SELECT * FROM vols WHERE idVol=?');
             $stmt->bindParam(1,$data['idVol']);
-			
+			$stmt->execute();
 			$vol = $stmt->fetch(PDO::FETCH_OBJ);
 
             
 			return $vol;
-        die(print_r($vol));
+        // die(print_r($vol));
 	}
 
-    static public function update($data,$idVol)
+    static public function update($data)
     {
+        
        
         // $date=date("y-m-d h:i:s", strtotime($data['HeurDarrivée']));
         $date=date("y-m-d h:i:s", strtotime($data['HeurDarrivée']));
@@ -99,33 +100,80 @@ class Vol
                             HeurDarrivée=?,
                             numberPlac=?,
                             prix=?,
-                            class=? WHERE idVol=:idVol'
+                            class=? WHERE idVol=?'
                 );
-            $stmt->bindParam(1,$data['idVol']);
-            $stmt->bindParam(2,$data['airlines']);
-            $stmt->bindParam(3,$data['numvol']);
-            $stmt->bindParam(4,$data['depart']);
-            $stmt->bindParam(5,$data['destination']);
-            $stmt->bindParam(6,$data['HeurDepart']);
-            $stmt->bindParam(7,$date);
-            $stmt->bindParam(8,$data['numberPlac']);
-            $stmt->bindParam(9,$data['prix']);
-            $stmt->bindParam(10,$data['class']);
+            // $stmt->bindParam(1,$data['idVol']);
+            // $stmt->bindParam(2,$data['airlines']);
+            // $stmt->bindParam(3,$data['numvol']);
+            // $stmt->bindParam(4,$data[' ']);
+            // $stmt->bindParam(5,$data['destination']);
+            // $stmt->bindParam(6,$data['HeurDepart']);
+            // $stmt->bindParam(7,$date);
+            // $stmt->bindParam(8,$data['numberPlac']);
+            // $stmt->bindParam(9,$data['prix']);
+            // $stmt->bindParam(10,$data['class']);
+            $params = array($data['airlines'],$data['numvol'],$data['depart'],$data['destination'],$data['HeurDepart'],$data['HeurDarrivée'],$data['numberPlac'],$data['prix'],$data['class'],$data['idVol']);
 
-            // $stmt->execute();
+            $stmt->execute($params);
+            
+        //    return extract($stmt);
 
-            if ($stmt->execute())
-            {
-                return "ok";
-            }
-            else
-            {
-                return "Error";
-            }
-         $stmt = null;
+        //     if ($stmt->execute())
+        //     {
+        //         return "ok";
+        //     }
+        //     else
+        //     {
+        //         return "Error";
+        //     }
+        // /
 
 
      }
+
+     static function searchVol($data)
+     {
+        $find = $data['find'];
+        var_dump($find);    
+
+		try{
+			$query = "SELECT * FROM vols WHERE airlines = ? ";
+			$stmt = DB::connect()->prepare($query);
+			$stmt->execute(array($find));
+			$vols = $stmt->fetchAll();
+        
+			return $vols;
+		}catch(PDOException $ex){
+			echo 'erreur' . $ex->getMessage();
+		}
+	}
+
+    static function search($data)
+    {
+        $depart=$data['depar'];
+        $arriv=$data['arrive'];
+        $day=$data['day'];
+        $month=$data['month'];
+        // $date=$month.'-'.$day;
+        // die(var_dump($date));
+		try{
+			$query = "SELECT * FROM vols WHERE depart = ? and destination=? or  HeurDepart=? ";
+			$stmt = DB::connect()->prepare($query);
+			$stmt->execute(array( $depart,$arriv, $month));
+			$vols = $stmt->fetchAll();
+            if (empty( $vols ))
+            {
+                redirect::to('eror');
+            }
+            else return $vols;
+        
+			
+		}catch(PDOException $ex){
+			echo 'erreur' . $ex->getMessage();
+		}
+
+    }
+     
             
 
 }

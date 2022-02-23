@@ -1,14 +1,17 @@
 <?php 
 
 if(isset($_POST['idVol'])){
+	// echo $_POST['idVol'];
     $exitVol = new VolController();
     $vol = $exitVol->getOneVol();
+
 }else{
     // Redirect::to('dashboard');
 }
 if(isset($_POST['submit'])){
-    $Vol->updateVol();
+	// $x= $_POST['idVol'];
     $Vol = new VolController();
+	$Vol->updateVol();
 }
 
 
@@ -42,6 +45,11 @@ include './views/include/aside.php';
 							<label for="prenom">numéro de vol*</label>
 							<input type="number" name="numvol" class="form-control border border-primary" placeholder="numvol"
                             value="<?php echo $vol->numvol; ?>"
+                            >
+						</div>
+						<div class="form-group">
+							<input type="hidden" name="idVol" class="form-control border border-primary" placeholder="numvol"
+                            value="<?php echo $vol->idVol; ?>"
                             >
 						</div>
 						<div class="form-group">

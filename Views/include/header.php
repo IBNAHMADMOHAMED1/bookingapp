@@ -38,8 +38,6 @@
     <!-- style css -->
     <link rel="stylesheet" href="./public/assets/style.css">
 </head>
-
-<body data-bs-spy="scrol" data-bs-target=".navbar">
     <!-- Navigation section -->
     <section id="header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
@@ -59,7 +57,7 @@
                             <a class="nav-link active" aria-current="page" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php BASE_URL;?>reserve">Réservations</a>
+                            <a class="nav-link" href="<?php BASE_URL;?>reserve">reservation</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Profile</a>
