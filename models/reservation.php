@@ -31,6 +31,33 @@ class reservation{
         endforeach;
 
     }
+    static public function effectuer($user,$vol)
+
+    {
+        // die(var_dump($vol->idVol));
+        $sql="INSERT INTO `reservation`(  `idClient`, `idVol`) VALUES (?,?)";
+        $stmt=DB::connect()->prepare($sql);
+        $valus=array($user->idClinet,$vol->idVol);
+        // $stmt->execute($valus);
+        if($stmt->execute($valus)){
+            // die(var_dump('yes'));
+            return 'ok';
+
+        }
+        
+
+    }
+    static public function getone($idClinet)
+
+    {
+        // die(var_export($idClinet));
+        $sql = "SELECT * FROM reservation WHERE idClient = $idClinet ORDER  BY idreservation DESC  LIMIT 1";
+        $stmt = DB::connect()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+       return $result;
+
+    }
 }
 
 ?>

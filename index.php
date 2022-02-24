@@ -15,7 +15,7 @@
     // $data->getAllEmployes();
 
     // $home->index($_GET['page']);
-    $pages=['home','tousRervations','supprimerVol','all','confirmation','UpdateVol','profile','reserve','mesréservation','ALLreservation','reservation','admin','dashboard' ,'ajouterVol','Annuler','logout','search','login'];
+    $pages=['home','tousRervations','supprimerVol','ticket','confirmation','UpdateVol','profile','reserve','mesréservation','ALLreservation','reservation','admin','dashboard' ,'ajouterVol','Annuler','logout','search','login'];
 
     if(isset($_GET['page']))
     {

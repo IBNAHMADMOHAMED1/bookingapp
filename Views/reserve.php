@@ -22,6 +22,12 @@ if (isset($_POST['ajt'])) {
     $exitres = new ReservationController();
     $res = $exitres->effectuerReservation($nomberBilet);
 }
+if (isset($_POST['continue'])){
+    // die(var_dump($user));
+    $exitAll = new ReservationController();
+    $all =$exitAll->InsserRes($user,$vol);
+
+}
 // die(var_dump($_POST['NumberPassger']));
 ?>
 <?php
@@ -80,7 +86,6 @@ include './views/include/header.php';
 
                     <div class="col-md-12">
                         <div class="">
-<!-- <input type="text" name="palce" value="<?php if (isset($_POST['NumberPassger'])){ $billette= $_POST['NumberPassger']+1;} echo $billette;  ?>"> --> -->
                             <label class="">Ajouter auter passager :</label>
                             
                             <?php 
@@ -93,14 +98,14 @@ include './views/include/header.php';
                                 echo '<p style="color:green;">le nombre de passagers disponibles :'.$vol->numberPlac.'</p>'; 
                             }?>
                            
-                            <input type="number" id="NumberPassger" min="0" max="<?php echo $max; ?>" name="NumberPassger" class="form-control" placeholder="1 passager"></input>
+                            <input type="number" id="NumberPassger" min="0" max="<?php echo $max; ?>" name="NumberPassger" class="form-control" ></input>
                             <!-- <?php if ( $user->num_place <1) echo ' <p style="color:red;"> nomber des*</p>' ?> -->
                             
                         </div>
 
                         <div class="text-center">
                             <button onclick="showtike()" type="button" class="btn btn-success" id="continueBooking">Ajouter</button>
-                             <button type="submit" class="btn btn-outline-success" id="continueBooking">continue</button>
+                             <button type="submit" name="continue" class="btn btn-outline-success" id="continueBooking">continue</button>
                         </div>
                         
                         <div class="text-center">

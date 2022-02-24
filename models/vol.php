@@ -115,18 +115,7 @@ class Vol
             $params = array($data['airlines'],$data['numvol'],$data['depart'],$data['destination'],$data['HeurDepart'],$data['HeurDarrivée'],$data['numberPlac'],$data['prix'],$data['class'],$data['idVol']);
 
             $stmt->execute($params);
-            
-        //    return extract($stmt);
-
-        //     if ($stmt->execute())
-        //     {
-        //         return "ok";
-        //     }
-        //     else
-        //     {
-        //         return "Error";
-        //     }
-        // /
+        
 
 
      }
@@ -171,6 +160,15 @@ class Vol
 		}catch(PDOException $ex){
 			echo 'erreur' . $ex->getMessage();
 		}
+
+    }
+    static public function updateOn($vols)
+    {
+        $new =($vols->numberPlac)-1;
+        $sql="UPDATE vols SET numberPlac=$new";
+
+        $stmt = DB::connect()->prepare($sql);
+        $stmt->execute();
 
     }
      

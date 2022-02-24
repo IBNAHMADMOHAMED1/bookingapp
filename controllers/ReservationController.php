@@ -35,6 +35,28 @@ class ReservationController
          }
 
     }
+
+    public function InsserRes($user,$vol)
+    {
+        
+    
+        $result = reservation:: effectuer($user,$vol);
+        // die(var_dump($params));
+        if($result === 'ok')
+        {
+           $res =vol::updateOn($vol);
+        //    Redirect::to('profile');
+
+        
+        }
+
+    }
+    public function getonRes($idClinet)
+    {
+        $res=reservation::getone($idClinet);
+        // die(var_dump($res));
+        return $res;
+    }
 }
 
 ?>
