@@ -26,6 +26,7 @@ class ReservationController
 
            ); 
            $params[$i]=$data;
+          //    die(var_dump($params));
           
         } 
         // die(var_dump($params));

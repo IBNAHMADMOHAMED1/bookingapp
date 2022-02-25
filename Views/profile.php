@@ -16,8 +16,12 @@ if (isset($_POST['idVol'])) {
 
     $exitVol = new VolController();
     $vol = $exitVol->getOneVol();
-    // die(var_dump($vol));
+    // die(print_r($vol));
 }
+$getabs= new abstractController();
+$infos = $getabs->getall();
+// die(var_dump($infos));
+
 
 if (isset($_POST['imprime']))
 {
@@ -151,28 +155,37 @@ include './views/include/header.php';
             <tr>
                 <th scope="col">Nom Prenom</th>
                 <th scope="col">Nombre de billettes</th>
+                <th scope="col">date</th>
                 <th scope="col">Total Prix</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
+           
             <form method="POST" action="ticket">
                 <?php
-                if (isset($_POST['NumberPassger']) && !(empty($_POST['NumberPassger']))) {
-                    $billettes = $_POST['NumberPassger'] + 1;
+                if (isset($_POST['NumberPassger'])) {
+                    $billettes = intval($_POST['NumberPassger'] )+ 1;
                 } else $billettes = 1;
+
+                foreach ( $infos as $info):
                 ?>
                 <tr>
-                    <th><?php echo $user->nom . ' ' . $user->prenom;; ?></th>
-                    <td><?php echo  $billettes; ?></td>
-                    <td><?php echo ($vol->prix) * ($billettes); ?></td>
+                    <th><?php echo $info['nom'].' '.$info['peron']; ?></th>
+                    <td><?php echo $info['numberpassger']?></td>
+                    <td><?php echo $info['date']?></td>
+                    <td><?php echo $info['numberpassger']* $info['prix'];?></td>
 
-                    <input type="hidden" name="idVol" value="<?php echo $vol->idVol; ?>">
+                    
+                    
+
                     <td class="d-flex flew-row"><button type="submit" name="" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-x-circle"></i> Annuler </button>
                         <button type="submit" name="imprime" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-filetype-pdf"></i> Imprime</button>
                     </td>
 
                 </tr>
+                <?php endforeach; ?>
+                <input type="hidden" name="idVol" value="<?php if(isset($_POST['idVol']))  echo $vol->idVol; ?>">
             </form>
         </tbody>
     </table>

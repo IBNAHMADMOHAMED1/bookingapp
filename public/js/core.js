@@ -3,16 +3,18 @@ let NumberPassger =document.getElementById("NumberPassger");
 let contaier=document.getElementById("contaier");
 let parent=document.getElementById("parent");
 let input =document.getElementById("input");
-
+let continueBooking =document.getElementById("continueBooking");
+let con =document.querySelector('.continue')
 
 elment.addEventListener('click',showtike);
 function showtike()
 {
   n=NumberPassger.value;
   let iDiv = document.createElement('div');
-  for (let i=0; i<n; i++)
+  for (let i=1; i<=n; i++)
   {
     contaier.style.display="block";
+    continueBooking.style.display='none';
     parent.innerHTML +=`<div class="row gx-3 mb-3">
 
     <div class="col-md-6">
@@ -34,7 +36,7 @@ function showtike()
     </div>
 
     <div class="col-md-6">
-        <label class="small mb-1" for="inputLocation">Date de naissanc</label>
+        <label class="small mb-1" for="inputLocation">Email</label>
         <input class="form-control" id="inputLocation" type="email" name="email`+i+`" placeholder="Entrez votre Email" value="">
     </div>
 </div>
@@ -53,13 +55,15 @@ function showtike()
 
     <div class="col-md-6">
         <label class="small mb-1" for="">date de naissanc</label>
-        <input class="form-control" id="" type="text" name="datenaissanc`+i+`" placeholder="Entrez votre date de naissance" value="">
+        <input class="form-control" id="" type="date" name="datenaissanc`+i+`" placeholder="Entrez votre date de naissance" value="">
     </div><br>
     
 <hr></hr> `;
 
   }
   input.innerHTML+=  `<input type="hidden" name="NumberPassger" value="`+n+`">`;
+  con.style.display=block;
+
 
 }
 // let continueBooking=document.getElementById('confirmer');

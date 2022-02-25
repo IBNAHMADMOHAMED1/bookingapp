@@ -22,11 +22,14 @@ if (isset($_POST['ajt'])) {
     $exitres = new ReservationController();
     $res = $exitres->effectuerReservation($nomberBilet);
 }
-if (isset($_POST['continue'])){
+if (isset($_POST['continue'])) {
     // die(var_dump($user));
-    $exitAll = new ReservationController();
-    $all =$exitAll->InsserRes($user,$vol);
+    $nomberBilet = $_POST['NumberPassger'];
+    $abs = new  abstractController();
+    $inf = $abs->insert($nomberBilet);
 
+    $exitAll = new ReservationController();
+    $all = $exitAll->InsserRes($user, $vol);
 }
 // die(var_dump($_POST['NumberPassger']));
 ?>
@@ -37,6 +40,7 @@ include './views/include/header.php';
 
 <body>
 
+
     <div class="container">
         <div class="row d-flex justify-content-center">
 
@@ -44,7 +48,7 @@ include './views/include/header.php';
         </div>
 
         <div class="row d-flex justify-content-center">
-            <form method="POST" class='bookingTicket' action="profile">
+            <form method="POST" class='bookingTicket' action="">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -57,7 +61,10 @@ include './views/include/header.php';
                             <P for="name" class="list-group-item">Date Depart : <?= $vol->HeurDepart; ?></p>
                             <hr class="mt-0 mb-3">
                             <P for="name" class="list-group-item">date Darrivée : <?= $vol->HeurDarrivée; ?></p>
-                            <input type="hidden" name="idVol" value="<?= $vol->idVol;?>>">
+                            <input type="hidden" name="idVol" value="<?= $vol->idVol; ?>>">
+                            <input type="hidden" name="prix" value="<?= $vol->prix; ?>">
+                            <input type="hidden" name="user_id" value="<?= $user_id; ?>">
+
                             <hr class="mt-0 mb-3">
                             <p class="list-group-item">Prix : <?= $vol->prix; ?> $</p>
                             <!-- <p class="list-group-item">Prix : <?= $vol->numberPlac; ?> $</p> -->
@@ -68,8 +75,10 @@ include './views/include/header.php';
                     <div class="col-md-6">
                         <div class="form-group">
                             <P for="name" class="list-group-item">Nom : <?php echo $user->nom; ?></p>
+                            <input type="hidden" name="firstname" value="<?php echo $user->nom; ?>">
                             <hr class="mt-0 mb-3">
                             <P for="name" class="list-group-item">Prenom : <?php echo $user->prenom; ?></p>
+                            <input type="hidden" name="lastname" value="<?php echo $user->prenom; ?>">
                             <hr class="mt-0 mb-3">
                             <P for="name" class="list-group-item">Date de naissanc : <?php echo $user->datenaissanc; ?></p>
                             <hr class="mt-0 mb-3">
@@ -78,6 +87,11 @@ include './views/include/header.php';
                             <P for="name" class="list-group-item">Numéro de passport: <?php echo $user->passport; ?></p>
                             <hr class="mt-0 mb-3">
                             <P for="name" class="list-group-item">Email : <?php echo $user->email; ?></p>
+                            <input type="hidden" name="ageclient" value="<?php echo $user->age?>">
+                            <input type="hidden" name="passportClinet" value="<?php echo $user->passport; ?>">
+                            <input type="hidden" name="datenaissanc0" value="<?php echo $user->datenaissanc; ?>">
+                            <input type="hidden" name="emailclinet" value="<?php echo $user->email; ?>">
+                            <input type="hidden" name="phonenumber" value="<?php echo $user->phonenumber; ?>">
 
                         </div>
                     </div>
@@ -87,63 +101,60 @@ include './views/include/header.php';
                     <div class="col-md-12">
                         <div class="">
                             <label class="">Ajouter auter passager :</label>
-                            
-                            <?php 
-                            $max=$k=$vol->numberPlac-1;
-                            if($vol->numberPlac<2){
-                                echo ' <p style="color:red;">Il nest pas possible dajouter une autre personne, le nombre de passagers disponibles :'.$vol->numberPlac.'</p>';
-                            
-                                
-                            }else{
-                                echo '<p style="color:green;">le nombre de passagers disponibles :'.$vol->numberPlac.'</p>'; 
-                            }?>
-                           
-                            <input type="number" id="NumberPassger" min="0" max="<?php echo $max; ?>" name="NumberPassger" class="form-control" ></input>
-                            <!-- <?php if ( $user->num_place <1) echo ' <p style="color:red;"> nomber des*</p>' ?> -->
-                            
+
+                            <?php
+                            $max = $k = $vol->numberPlac - 1;
+                            if ($vol->numberPlac < 2) {
+                                echo ' <p style="color:red;">Il nest pas possible dajouter une autre personne, le nombre de passagers disponibles :' . $vol->numberPlac . '</p>';
+                            } else {
+                                echo '<p style="color:green;">le nombre de passagers disponibles :' . $vol->numberPlac . '</p>';
+                            } ?>
+
+                            <input type="number" id="NumberPassger" min="0" max="<?php echo $max; ?>" name="NumberPassger" class="form-control"></input>
+                            <!-- <?php if ($user->num_place < 1) echo ' <p style="color:red;"> nomber des*</p>' ?> -->
+                            <!-- <input type="number" name="k" value="<?php echo $_POST['NumberPassger'] ?> "> -->
+
                         </div>
 
                         <div class="text-center">
+
                             <button onclick="showtike()" type="button" class="btn btn-success" id="continueBooking">Ajouter</button>
-                             <button type="submit" name="continue" class="btn btn-outline-success" id="continueBooking">continue</button>
+                            <button type="submit" name="continue" class="btn btn-outline-success continueBooking " id="continueBooking">continue</button>
                         </div>
-                        
+
                         <div class="text-center">
-                           
+
                         </div>
                     </div>
                 </div>
+
+                <div class="row d-flex justify-content-center tiket ">
+                    <div class="col-xl-8">
+                        <!-- Détails du compte card-->
+                        <div class="card mb-4" id="contaier">
+                            <div class="card-header" style="background: #5C7AEA; color:#fff; ">Détails du compte</div>
+                            <div class="card-body">
+                                <form method="POST" action="profile">
+                                    <div id="input">
+                                    </div>
+                                    <!-- Form Row-->
+                                    <div class="info" id="parent">
+
+                                    </div>
+
+                            </div>
+                            <div class="d-grid gap-2 continue">
+                                <input type="hidden" name="" value="<script> </script>">
+                                <!-- <button name="ajt" class="btn btn-primary" type="submit">Ajouter</button> -->
+                                <button type="submit" name="continue" class="btn btn-success continue " style="display:non;" id="continueBooking">continue</button>
+
+                            </div>
+
 
             </form>
         </div>
-
-
-
-        <div class="row d-flex justify-content-center tiket ">
-            <div class="col-xl-8">
-                <!-- Détails du compte card-->
-                <div class="card mb-4" id="contaier">
-                    <div class="card-header" style="background: #5C7AEA; color:#fff; ">Détails du compte</div>
-                    <div class="card-body">
-                        <form method="POST" action="" >
-                            <div id="input">
-                            </div>
-                            <!-- Form Row-->
-                            <div class="info" id="parent">
-
-                            </div>
-
-                    </div>
-                    <div class="d-grid gap-2">
-                        <input type="hidden" name="" value="<script> </script>">
-                        <button name="ajt" class="btn btn-primary" type="submit">Ajouter</button>
-                    </div>
-
-
-                    </form>
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 
     </div>

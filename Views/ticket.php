@@ -50,7 +50,7 @@ if (isset($_POST['idVol'])) {
 						<span class="bold">Date</span>
 						<?php
 						$day=date("d" ,strtotime($res->datereservation));
-						$month=date("M" ,strtotime($res->datereservation));
+						$month=date("F" ,strtotime($res->datereservation));
 						$yaer=date("Y" ,strtotime($res->datereservation));
 						
 						
@@ -70,7 +70,7 @@ if (isset($_POST['idVol'])) {
 				</div>
 				<div class="total_wrap">
 					<p>Airline :</p>
-	          		<p class="bold price"><?php echo $vol->airlines;?></p>
+	          		<p class="bold price"><?php if(!(isset($_POST['idVol']))) echo $vol->airlines;?></p>
 				</div>
 			</div>
 		</div>
@@ -101,7 +101,7 @@ if (isset($_POST['idVol'])) {
 							<p><?php echo $user->passport;?></p>
 						</div>
 						<div class="col col_total">
-							<p><?php echo $vol->prix;?></p>
+							<p><?php if(!(isset($_POST['idVol']))) echo $vol->prix;?></p>
 						</div>
 					</div>
 					
@@ -115,7 +115,7 @@ if (isset($_POST['idVol'])) {
 				<div class="grandtotal_sec">
 			        <p class="bold">
 			            <span>TOTAL</span>
-			            <span><?php echo $vol->prix;?></span>
+			            <span><?php if(!(isset($_POST['idVol']))) echo $vol->prix ;else echo '<p style=color:red> Vous navez pas encore réservé/p>';?></span>
 			        </p>
 			        <p>
 			            <span>Tax  18%</span>
@@ -147,7 +147,7 @@ if (isset($_POST['idVol'])) {
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap');
 
 :root {
-  --primary: #0000ff;
+  --primary: #8080ff;
   --secondary: #3d3d3d; 
   --white: #fff;
 }
@@ -184,7 +184,7 @@ body{
 
 .invoice_wrapper{
 	border: 3px solid var(--primary);
-	width: 700px;
+	width: 850px;
 	max-width: 100%;
 }
 
