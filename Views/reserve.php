@@ -48,7 +48,7 @@ include './views/include/header.php';
         </div>
 
         <div class="row d-flex justify-content-center">
-            <form method="POST" class='bookingTicket' action="">
+            <form method="POST" class='bookingTicket' action="profile">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -134,7 +134,8 @@ include './views/include/header.php';
                         <div class="card mb-4" id="contaier">
                             <div class="card-header" style="background: #5C7AEA; color:#fff; ">Détails du compte</div>
                             <div class="card-body">
-                                <form method="POST" action="profile">
+                                <form method="POST" action="
+                                ">
                                     <div id="input">
                                     </div>
                                     <!-- Form Row-->
