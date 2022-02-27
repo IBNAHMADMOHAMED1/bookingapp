@@ -1,10 +1,10 @@
 
 
 <?php 
-if (isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true ) {
-} else {
-  Redirect::to('login');
-}
+// if (isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true ) {
+// } else {
+//   Redirect::to('login');
+// }
 
 ?>
 
@@ -132,6 +132,8 @@ if (isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true ) {
                 </button>
             </div>
         </div>
+
+        
         <!-- o -->
         <div class="offers">
             <div class="container">
@@ -267,7 +269,7 @@ if (isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true ) {
 </div>
 
 
-<!-- reviews -->
+
 <section>
     <div class="container">
         <div class="section-title">

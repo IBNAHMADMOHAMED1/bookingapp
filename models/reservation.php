@@ -4,9 +4,10 @@ class reservation{
 
     static public function getAllRese()
     {
-        $stmt=DB::Connect()->prepare('SELECT * FROM reservation');
+        $stmt=DB::Connect()->prepare('SELECT * FROM reservation , vols');
         $stmt->execute();
-        return $stmt->fetchAll();
+        $res =$stmt->fetchAll();
+        return $res;
     }
     static public function addResrvations($params,$nomberBilet)
     {
@@ -98,6 +99,13 @@ class reservation{
                 $i++;
         endforeach;
     }
+
+    // static public function  annuler($idreservation)
+    // {
+    //     $query ="DELETE FROM `ticket` WHERE id = $idreservation";
+    //     $stmt=DB::connect()->prepare($query);
+    //     $stmt->execute();
+    // }
 }
 
 ?>

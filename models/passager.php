@@ -18,7 +18,7 @@ class passager
     {
         $user_email = strtolower($user_email);
         $sql = "SELECT * from passager where email='$user_email'";
-        $stmt = Db::connect()->prepare($sql);
+        $stmt = DB::connect()->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetch(pdo::FETCH_OBJ);
         return $user;
@@ -33,6 +33,20 @@ class passager
             $user=$stmt->fetch(PDO::FETCH_OBJ);
             return $user;
     }
+    static public function logout(){
+		session_destroy();
+	}
+
+    static public function update($data,$user_id){
+        // die(var_dump($data));
+         $sql = "UPDATE passager  SET nom =? ,prenom=? ,age =? ,datenaissanc=? ,phonenumber=?,email=?,password=? where idClinet=$user_id "; 
+         $stmt =DB::connect()->prepare($sql);
+         
+         $value=array($data['nom'],$data['prenom'],$data['age'],$data['datenaissanc'],$data['phonenumber'],$data['email'],$data['password']);
+         $stmt->execute($value);
+         
+    }
+
 }
 
 ?>

@@ -1,1 +1,4 @@
-hi  logout
+<?php 
+	passager::logout();
+	Redirect::to('login');
+?>

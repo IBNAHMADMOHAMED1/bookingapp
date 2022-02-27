@@ -4,7 +4,8 @@ let contaier=document.getElementById("contaier");
 let parent=document.getElementById("parent");
 let input =document.getElementById("input");
 let continueBooking =document.getElementById("continueBooking");
-let con =document.querySelector('.continue')
+let con =document.querySelector('#continue')
+// console.log(con)
 
 elment.addEventListener('click',showtike);
 function showtike()

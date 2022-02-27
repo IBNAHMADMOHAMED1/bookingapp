@@ -162,13 +162,15 @@ class Vol
 		}
 
     }
-    static public function updateOn($vols)
+    static public function updateOn($numberPlac,$idVol,$max)
     {
-        $new =($vols->numberPlac)-1;
-        $sql="UPDATE vols SET numberPlac=$new";
+        $new =($numberPlac+1)-$max;
+        $sql="UPDATE vols  SET numberPlac=$new  where idVol=$idVol";
 
         $stmt = DB::connect()->prepare($sql);
-        $stmt->execute();
+       if($stmt->execute()){
+        //    die(var_dump('yes'));
+       };
 
     }
      

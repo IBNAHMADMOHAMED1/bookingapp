@@ -88,9 +88,7 @@ p{
 
 }
 
-.navbar-toggler-icon {
-    color: #f63440;
-  }
+
 
   #header .nav-item .nav-link:hover,
   #header .nav-item .nav-link.active{
@@ -120,6 +118,7 @@ p{
       background-position: 90% center;
       min-height: 650px;
       position: relative;
+      background-color: #F6F8FF;
   }
   .home .home-banner-1 img{
       /* background-image:url('/image/homebg.png') ; */

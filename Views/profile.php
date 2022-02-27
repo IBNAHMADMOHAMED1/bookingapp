@@ -22,10 +22,21 @@ $getabs= new abstractController();
 $infos = $getabs->getall();
 // die(var_dump($infos));
 
+$getAllReservations = new reservation();
+$reservation= $getAllReservations->getone($user_id);
+// die(var_dump($reservation));
 
-if (isset($_POST['imprime']))
+
+if (isset($_POST['submit']))
 {
-    // Redirect::to('ticket');
+    $update= new UserController();
+    $up=$update->updateProfile($user_id);
+}
+if (isset($_POST['annuler']))
+{
+    $idreservation=$_POST['idreservation'];
+    $annulerResva = new abstractController();
+    $annuler= $annulerResva->annuler($idreservation);
 }
 
 include './views/include/header.php';
@@ -82,7 +93,7 @@ include './views/include/header.php';
             <div class="card mb-4">
                 <div class="card-header" style="background: #5C7AEA; color:#fff; ">Détails du compte</div>
                 <div class="card-body">
-                    <form>
+                    <form method="POST">
                         <!-- nom)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Nom d'utilisateur (comment votre nom apparaîtra aux autres utilisateurs du site)</label>
@@ -98,7 +109,7 @@ include './views/include/header.php';
 
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastName">Nom</label>
-                                <input class="form-control" id="inputLastName" type="nom" placeholder="Entrez votre nom de famille" value="">
+                                <input class="form-control" id="inputLastName" type="nom" name="inputLastName" placeholder="Entrez votre nom de famille" value="">
                             </div>
                         </div>
 
@@ -110,7 +121,7 @@ include './views/include/header.php';
                             </div>
 
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Date de naissanc</label>
+                                <label class="small mb-1" for="inputLocation">Email</label>
                                 <input class="form-control" id="inputLocation" type="email" name="email" placeholder="Entrez votre Email" value="">
                             </div>
                         </div>
@@ -124,7 +135,7 @@ include './views/include/header.php';
 
                             <div class="col-md-6">
                                 <label class="small mb-1" for="">Numéro de passport</label>
-                                <input class="form-control" id=" type=" number" placeholder="Entrez voter numéro de PassPort" value="">
+                                <input class="form-control" id=" type=" name="passport" placeholder="Enter your"number" placeholder="Entrez voter numéro de PassPort" value="">
                             </div>
 
                             <div class="col-md-6">
@@ -138,8 +149,8 @@ include './views/include/header.php';
                             </div>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Sauvegarder</button>
-                            <button class="btn btn-primary border-0" style="background: red; border:non; color:#fff; " type="button">Se déconnecter</button>
+                            <button class="btn btn-primary" name="submit" type="submit">Sauvegarder</button>
+                            <a href="<?php echo BASE_URL;?>logout" class="btn btn-primary border-0" style="background: red; border:non; color:#fff; " type="submit">Se déconnecter</a>
                         </div>
                     </form>
 
@@ -161,6 +172,7 @@ include './views/include/header.php';
             </tr>
         </thead>
         <tbody>
+            
            
             <form method="POST" action="ticket">
                 <?php
@@ -176,16 +188,22 @@ include './views/include/header.php';
                     <td><?php echo $info['date']?></td>
                     <td><?php echo $info['numberpassger']* $info['prix'];?></td>
 
+                  
                     
-                    
-
-                    <td class="d-flex flew-row"><button type="submit" name="" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-x-circle"></i> Annuler </button>
+                                            <script>
+                        function myFunction() {
+                        confirm("Press a button!");
+                        if (confirm("Press a button!") == true) {
+                                                }
+                        }
+                        </script>
+                    <td class="d-flex flew-row"><button onclick=" myFunction() " type="submit" name="annuler" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-x-circle"></i> Annuler </button>
                         <button type="submit" name="imprime" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-filetype-pdf"></i> Imprime</button>
                     </td>
 
                 </tr>
                 <?php endforeach; ?>
-                <input type="hidden" name="idVol" value="<?php if(isset($_POST['idVol']))  echo $vol->idVol; ?>">
+                <input type="hidden" name="idVol" value="<?php  echo $reservation->idVol; ?>">
             </form>
         </tbody>
     </table>

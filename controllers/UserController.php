@@ -63,6 +63,22 @@ class UserController
 			// die(print_r($vol));
 			return $user;
 
+    }
+    public function updateProfile($user_id)
+    {
+        $data= array(
+            'nom' =>$_POST['inputLastName'],
+            'prenom'=>$_POST['prenom'],
+            'datenaissanc'=>$_POST['datenaissanc'],
+            'age'=>$_POST['age'],
+            'phonenumber'=> $_POST['phonenumber'],
+            'passport'=>$_POST['passport'],
+            'email'=>$_POST['email'],
+            'password'=>$_POST['password'],
+
+        );
+        // die(var_dump($data));
+        $result = passager::update($data,$user_id);
     }	
     
 }

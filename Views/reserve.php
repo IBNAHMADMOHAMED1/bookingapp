@@ -48,7 +48,7 @@ include './views/include/header.php';
         </div>
 
         <div class="row d-flex justify-content-center">
-            <form method="POST" class='bookingTicket' action="profile">
+            <form method="POST" class='bookingTicket' action="">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -63,6 +63,7 @@ include './views/include/header.php';
                             <P for="name" class="list-group-item">date Darrivée : <?= $vol->HeurDarrivée; ?></p>
                             <input type="hidden" name="idVol" value="<?= $vol->idVol; ?>>">
                             <input type="hidden" name="prix" value="<?= $vol->prix; ?>">
+                            <input type="hidden" name="max" value="<?= $vol->numberPlac; ?>">
                             <input type="hidden" name="user_id" value="<?= $user_id; ?>">
 
                             <hr class="mt-0 mb-3">
@@ -119,7 +120,7 @@ include './views/include/header.php';
                         <div class="text-center">
 
                             <button onclick="showtike()" type="button" class="btn btn-success" id="continueBooking">Ajouter</button>
-                            <button type="submit" name="continue" class="btn btn-outline-success continueBooking " id="continueBooking">continue</button>
+                            <button type="submit" name="continue" class="btn btn-outline-success continueBooking " id="continue">continue</button>
                         </div>
 
                         <div class="text-center">

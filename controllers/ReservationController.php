@@ -45,7 +45,7 @@ class ReservationController
         // die(var_dump($params));
         if($result === 'ok')
         {
-           $res =vol::updateOn($vol);
+        //    $res =vol::updateOn($vol);
         //    Redirect::to('profile');
 
         

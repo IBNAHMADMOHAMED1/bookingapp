@@ -3,7 +3,7 @@
 
     $data = new ReservationController();
     $vols = $data->getAllReservations();
-    // die(print_r($volss));
+    // die(print_r($vols));
 
 ?>
 

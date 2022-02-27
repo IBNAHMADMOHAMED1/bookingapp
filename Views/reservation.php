@@ -121,7 +121,7 @@ include './views/include/header.php';
       <div class="text-center text-uppercase">
         <p class="d-block">date départ : <?= $vol['HeurDepart'] ?></p>
         <p class="d-block my-6 " style="color:green;">date Arriver: <?=   $vol['HeurDarrivée']; ?> </p>
-        <?php if($vol['numberPlac']==0) echo '<p class="d-block my-4"style="color:red;">ne pas fiable</p>';
+        <?php if($vol['numberPlac']<=0) echo '<p class="d-block my-4"style="color:red;">ne pas fiable</p>';
             ?>
         
       </div>

@@ -4,6 +4,7 @@ class abstractController{
 
    public function insert($nomberBilet)
    {
+      $max=$_POST['max'];
        $datuser=array(
         'user_id' => $_POST['user_id'],
         'idVol' => $_POST['idVol'],
@@ -34,19 +35,29 @@ class abstractController{
         }
         // $params=$datuser;
         // array_push($params,$datuser);
-        // die(var_dump($params));
+      //   die(var_dump($params));
        $res=abstractt::insert($datuser);
        $results =reservation::insertMultiple($params,$datuser);
+       $vol =vol::updateOn($nomberBilet,$datuser['idVol'],$max);
        if($results === 'ok' && $res === 'ok')
        {
-           echo '<script>alert(nice)</script>';
+         //   echo '<script>alert(nice)</script>';
+         redirect::to('profile');
+         
        }
 
    }
+
    public function getall()
    {
        $res=abstractt::getall();
     return $res;
+   }
+
+   public function annuler($idreservation)
+   {
+      $res = abstractt:: annuler($idreservation);
+      // $results = reservation::annuler($idreservation);
    }
 
 }

@@ -115,7 +115,7 @@ if (isset($_POST['idVol'])) {
 				<div class="grandtotal_sec">
 			        <p class="bold">
 			            <span>TOTAL</span>
-			            <span><?php if(!(isset($_POST['idVol']))) echo $vol->prix ;else echo '<p style=color:red> Vous navez pas encore réservé/p>';?></span>
+			            <span><?php if((isset($_POST['idVol']))) echo $vol->prix ;else echo '<p style=color:red> Vous navez pas encore réservé/p>';?></span>
 			        </p>
 			        <p>
 			            <span>Tax  18%</span>

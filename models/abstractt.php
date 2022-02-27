@@ -23,6 +23,12 @@ class abstractt {
         $res = $stmt->fetchAll();
         return $res;
     }
+    static public function  annuler($idreservation){
+
+        $query ="DELETE FROM `abstract` WHERE id = $idreservation";
+        $stmt=DB::connect()->prepare($query);
+        $stmt->execute();
+    }
 
 }
 ?>
