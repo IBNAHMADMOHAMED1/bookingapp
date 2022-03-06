@@ -47,6 +47,9 @@ class UserController
                     $_SESSION['passport'] = $user->passport;
                     $_SESSION['phonenumber'] = $user->phonenumber;
                     $_SESSION['password'] = $user->password;
+                    if ($user->email=='admin@admin'){
+                        $_SESSION['admin'] = 'admin';
+                    }
 
                     Redirect::to('home');
             } else {

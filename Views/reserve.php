@@ -25,8 +25,9 @@ if (isset($_POST['ajt'])) {
 if (isset($_POST['continue'])) {
     // die(var_dump($user));
     $nomberBilet = $_POST['NumberPassger'];
+    // die(var_dump($nomberBilet));
     $abs = new  abstractController();
-    $inf = $abs->insert($nomberBilet);
+    $inf = $abs->insert($nomberBilet,$user_id);
 
     $exitAll = new ReservationController();
     $all = $exitAll->InsserRes($user, $vol);
@@ -44,11 +45,12 @@ include './views/include/header.php';
     <div class="container">
         <div class="row d-flex justify-content-center">
 
-            <h1> Tickets </h1>
+            <!-- <h1> Tickets </h1> -->
         </div>
 
         <div class="row d-flex justify-content-center">
             <form method="POST" class='bookingTicket' action="">
+                
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

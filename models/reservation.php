@@ -36,7 +36,7 @@ class reservation{
 
     {
         // die(var_dump($vol->idVol));
-        $sql="INSERT INTO `reservation`(  `idClient`, `idVol`) VALUES (?,?)";
+        $sql="INSERT INTO reservation(  idClient, idVol) VALUES (?,?)";
         $stmt=DB::connect()->prepare($sql);
         $valus=array($user->idClinet,$vol->idVol);
         // $stmt->execute($valus);

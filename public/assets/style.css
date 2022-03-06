@@ -32,7 +32,7 @@ line-height: 1.75rem;
 background:var(--bg-white);
 color: var(--text-black);
 overflow-x:hidden;
-background-color:#ebefff !important;
+/* background-color:#ebefff !important; */
 
 }
 /* html::-webkit-scrollbar{

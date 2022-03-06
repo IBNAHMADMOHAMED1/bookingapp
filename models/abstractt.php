@@ -2,14 +2,17 @@
 
 class abstractt {
 
-    static public function insert($data)
+    static public function insert($data,
+    $user_id )
     {
         $nomber=(intval($data['numberpassger'])+1);
+        // die(var_dump( $user_id ));
 
-        $sql = "INSERT INTO abstract(nom,peron,prix,numberpassger) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO abstract(nom,peron,prix,numberpassger,idclient) VALUES (?,?,?,?,?)";
         $stmt=DB::connect()->prepare($sql);
 
-        $value =array($data['nom0'],$data['prenom0'],$data['prix'],$nomber);
+        $value =array($data['nom0'],$data['prenom0'],$data['prix'],$nomber,
+        $user_id );
         if($stmt->execute($value)){
             return 'ok';
         };
@@ -24,10 +27,16 @@ class abstractt {
         return $res;
     }
     static public function  annuler($idreservation){
+        // die(var_dump($idreservation));
 
-        $query ="DELETE FROM `abstract` WHERE id = $idreservation";
+        $query =" DELETE FROM abstract WHERE id = $idreservation ";
         $stmt=DB::connect()->prepare($query);
-        $stmt->execute();
+        if ($stmt->execute()){
+            // die(var_dump('h'));
+        echo '<script >alert(message successfully sent)</script>';
+            // echo '';  //not showing an alert box.
+            // echo '</script>';
+        }
     }
 
 }

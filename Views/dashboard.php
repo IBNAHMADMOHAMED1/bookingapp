@@ -4,6 +4,13 @@
 // $vols=$data->getAllEmployes();
 // print_r($vols); 
 
+if (!(isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true &&   $_SESSION['admin'] === 'admin')) {
+    
+    Redirect::to('error');
+}
+
+
+
 
 if (isset($_POST['find'])) {
     $data = new VolController();
@@ -20,7 +27,7 @@ include './views/include/aside.php';
 <div class="container-sm ">
     <div class="row my-4 ">
         <div class="col-md-30 mx-auto">
-            <?php include('./views/include/alerts.php'); ?>
+            
             <div class="card " style="margin-top:80px;">
                 <div class="card-body bg-lghit " style="background: #F6F8FF; ">
                     <div class="table-responsive-lg ">

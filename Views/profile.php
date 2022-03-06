@@ -61,6 +61,13 @@ include './views/include/header.php';
                     <img class="img-account-profile rounded-circle mb-2" src="./image/clinet1.png" alt="">
 
                     <div class="small font-italic text-muted mb-4">JPG 1G</div>
+                    <?php 
+                    if (isset($_SESSION['admin']) )
+                    { 
+                        echo '<p>admin</p>';
+                    }
+                    
+                    ?>
 
                     <button class="btn btn-primary" type="button">Nouvelle image</button>
 
@@ -174,7 +181,7 @@ include './views/include/header.php';
         <tbody>
             
            
-            <form method="POST" action="ticket">
+            <form method="POST" action="">
                 <?php
                 if (isset($_POST['NumberPassger'])) {
                     $billettes = intval($_POST['NumberPassger'] )+ 1;
@@ -197,13 +204,14 @@ include './views/include/header.php';
                                                 }
                         }
                         </script>
-                    <td class="d-flex flew-row"><button onclick=" myFunction() " type="submit" name="annuler" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-x-circle"></i> Annuler </button>
+                    <td class="d-flex flew-row"><button onclick="" type="submit" name="annuler" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-x-circle"></i> Annuler </button>
                         <button type="submit" name="imprime" class="btn btn-outline-primary p-1 mr-1 my-1"><i class="bi bi-filetype-pdf"></i> Imprime</button>
                     </td>
 
                 </tr>
                 <?php endforeach; ?>
                 <input type="hidden" name="idVol" value="<?php  echo $reservation->idVol; ?>">
+                <input type="hidden" name="idreservation" value="<?= $info['id']; ?>">
             </form>
         </tbody>
     </table>

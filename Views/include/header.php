@@ -54,16 +54,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                            <a class="nav-link active" aria-current="page" href="<?php BASE_URL;?>home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php BASE_URL;?>reserve">reservation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="<?php BASE_URL;?>profile">"Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="<?php BASE_URL;?>home">Contact</a>
                         </li>
 
                     </ul>

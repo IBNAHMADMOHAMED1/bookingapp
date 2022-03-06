@@ -411,12 +411,12 @@
         <div>
           <span><i class = "fas fa-envelope-open"></i></span>
           <span>E-mail</span>
-          <span class = "text">mail@company.com</span>
+          <span class = "text">M.ibnahmad</span>
         </div>
         <div>
           <span><i class = "fas fa-map-marker-alt"></i></span>
           <span>Address</span>
-          <span class = "text">2939 Patrick Street, Vicotria TX, United States</span>
+          <span class = "text">United States</span>
         </div>
         <div>
           <span><i class = "fas fa-clock"></i></span>

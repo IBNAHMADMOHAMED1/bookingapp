@@ -2,9 +2,11 @@
 
 class abstractController{
 
-   public function insert($nomberBilet)
+   public function insert($nomberBilet,
+   $user_id )
    {
       $max=$_POST['max'];
+      // die(var_dump($max));
        $datuser=array(
         'user_id' => $_POST['user_id'],
         'idVol' => $_POST['idVol'],
@@ -36,13 +38,20 @@ class abstractController{
         // $params=$datuser;
         // array_push($params,$datuser);
       //   die(var_dump($params));
-       $res=abstractt::insert($datuser);
+       $res=abstractt::insert($datuser,
+       $user_id );
        $results =reservation::insertMultiple($params,$datuser);
        $vol =vol::updateOn($nomberBilet,$datuser['idVol'],$max);
-       if($results === 'ok' && $res === 'ok')
+       if($results === 'ok' && $res === 'ok' || $vol === 'ok')
        {
-         //   echo '<script>alert(nice)</script>';
+           
          redirect::to('profile');
+          
+         // Session::set('Success','opération réussie');
+         // header("Location: http://www.blabla.com");
+         // redirect::to('profile');
+        
+//   die(var_dump('hi'));
          
        }
 
