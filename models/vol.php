@@ -6,7 +6,7 @@ class Vol
 
     static public function getAll()
     {
-        $stmt=DB::Connect()->prepare('SELECT * FROM vols');
+        $stmt=DB::Connect()->prepare('SELECT * FROM vols where numberPlac >0');
         $stmt->execute();
         return $stmt->fetchAll();
         // $stmt->close();

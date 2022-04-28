@@ -4,7 +4,9 @@ class AdminController
 {
     public function index($page)
     {
-        include('views/dashboard.php');
+        include('./views/dashboard.php');
+        // require_once './views/dashboard.php';
+        
     }
     
    

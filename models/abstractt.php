@@ -32,10 +32,7 @@ class abstractt {
         $query =" DELETE FROM abstract WHERE id = $idreservation ";
         $stmt=DB::connect()->prepare($query);
         if ($stmt->execute()){
-            // die(var_dump('h'));
-        echo '<script >alert(message successfully sent)</script>';
-            // echo '';  //not showing an alert box.
-            // echo '</script>';
+           return 'OK';
         }
     }
 

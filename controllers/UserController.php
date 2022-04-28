@@ -28,7 +28,17 @@ class UserController
             'passport'=>$_POST['passport'],
             'password'=>$_POST['password']
         );
-        $result = passager::CreatAccount($data);
+        if ($_POST['email']==='admin@admin')
+        {
+            // die(var_dump($_POST['email']));
+            // Session::set('Success','eroor');
+            echo " <script>alert('nop')</script>";
+     
+        }else
+        {
+            $result = passager::CreatAccount($data);
+        }
+        
     }
     public function auth()
     {
@@ -47,7 +57,9 @@ class UserController
                     $_SESSION['passport'] = $user->passport;
                     $_SESSION['phonenumber'] = $user->phonenumber;
                     $_SESSION['password'] = $user->password;
-                    if ($user->email=='admin@admin'){
+                    
+                    if ($user->email=='admin@admin')
+                    {
                         $_SESSION['admin'] = 'admin';
                     }
 

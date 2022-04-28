@@ -37,6 +37,9 @@ if (isset($_POST['annuler']))
     $idreservation=$_POST['idreservation'];
     $annulerResva = new abstractController();
     $annuler= $annulerResva->annuler($idreservation);
+
+    echo "<script>alert(\"la reservation est nulle\")</script>";
+    
 }
 
 include './views/include/header.php';

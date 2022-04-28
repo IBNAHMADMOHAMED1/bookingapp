@@ -66,6 +66,9 @@ class abstractController{
    public function annuler($idreservation)
    {
       $res = abstractt:: annuler($idreservation);
+      if ($res === 'ok'){
+         return 'ok';
+      }
       // $results = reservation::annuler($idreservation);
    }
 

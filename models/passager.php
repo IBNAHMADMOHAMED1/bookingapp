@@ -10,7 +10,8 @@ class passager
         $params =array($data['nom'],$data['prenom'],$data['age'],$data['datenaissanc'],$data['phonenumber'],$data['email'],$data['passport'],$data['password']);
         $res=$stmt->execute($params);
         if (!empty($res)){
-            echo" <script>alert('Success')</script>";
+            
+            echo " <script>alert('Success')</script>";
         }
 
     }

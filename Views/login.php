@@ -5,7 +5,7 @@
   {
       $data=new UserController();
       $data->register();
-      // die(print_r($employes));
+    //   die(print_r($employes));
   }
   if(isset($_POST['login']))
   {

@@ -6,10 +6,10 @@ if (isset($_POST['reserve'])) {
     // die(print_r($vols));
 
 } else {
-   $data = new VolController();
-     $vols = $data->getAllVols();
-//  die(print_r($volss));
- }
+    $data = new VolController();
+    $vols = $data->getAllVols();
+    //  die(print_r($volss));
+}
 
 
 
@@ -97,55 +97,44 @@ include './views/include/header.php';
         </section>
 
 
-     
 
-    <div class="container my-5">
-    <div class="text-center mb-5">
-      <!-- <span class="text-secondary text-uppercase">Pricing</span> -->
-      <h1 class="text-capitalize font-weight-bold">Tarification <span class="headline">Des plans</span></h1>
-    </div>
-<?php foreach ($vols as $vol) : ?>
-    <div class="my-5 py-4 px-5 bg-light d-sm-flex align-items-center justify-content-between">
-      <div class="text-center">
-        
-        <h1 class="my-2 font-weight-bold">$<?= $vol['prix'] ?></h1>
-        
-      </div>
-      <div class="text-center text-uppercase ">
-        <p class="d-block">Airline : <?= $vol['airlines']; ?>  </p>
-        <p class="d-block my-3">départ : <?= $vol['depart']; ?> </p>
-        <p class="d-block my-3">Arriver: <?= $vol['destination'] ?> </p>
-        
-        
-      </div>
-      <div class="text-center text-uppercase">
-        <p class="d-block">date départ : <?= $vol['HeurDepart'] ?></p>
-        <p class="d-block my-6 " style="color:green;">date Arriver: <?=   $vol['HeurDarrivée']; ?> </p>
-        <?php if($vol['numberPlac']<=0) echo '<p class="d-block my-4"style="color:red;">ne pas fiable</p>';
-            ?>
-        
-      </div>
-      <form action="reserve" method="post">
-     <div class="text-center">
-      
-        <button type="submit" name="idVol"value="<?php echo $vol['idVol'] ?>" class="btn text-white px-5 py-3 main-btn">Reserve</button>
-        <!-- <a type="submit" name="sum"  href="<?php echo BASE_URL; ?>reserve" class="btn text-white px-5 py-3 main-btn">Reserve</a> -->
-      </div>
-      </form>
-     
-    </div>
-    <?php endforeach; ?>
 
-    
+        <div class="container my-5">
+            <div class="text-center mb-5">
+                <!-- <span class="text-secondary text-uppercase">Pricing</span> -->
+                <h1 class="text-capitalize font-weight-bold">Tarification <span class="headline">Des plans</span></h1>
+            </div>
+            <?php foreach ($vols as $vol) : ?>
+                <div class="my-5 py-4 px-5 bg-light d-sm-flex align-items-center justify-content-between">
+                    <div class="text-center">
 
-   
- 
-  
+                        <h1 class="my-2 font-weight-bold">$<?= $vol['prix'] ?></h1>
 
- 
+                    </div>
+                    <div class="text-center text-uppercase ">
+                        <p class="d-block">Airline : <?= $vol['airlines']; ?> </p>
+                        <p class="d-block my-3">départ : <?= $vol['depart']; ?> </p>
+                        <p class="d-block my-3">Arriver: <?= $vol['destination'] ?> </p>
 
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+                    </div>
+                    <div class="text-center text-uppercase">
+                        <p class="d-block">date départ : <?= $vol['HeurDepart'] ?></p>
+                        <p class="d-block my-6 " style="color:green;">date Arriver: <?= $vol['HeurDarrivée']; ?> </p>
+                        <?php if ($vol['numberPlac'] <= 0) echo '<p class="d-block my-4"style="color:red;">ne pas fiable</p>';
+                        ?>
+
+                    </div>
+                    <form action="reserve" method="post">
+                        <div class="text-center">
+
+                            <button type="submit" name="idVol" value="<?php echo $vol['idVol'] ?>" class="btn text-white px-5 py-3 main-btn">Reserve</button>
+                            <!-- <a type="submit" name="sum"  href="<?php echo BASE_URL; ?>reserve" class="btn text-white px-5 py-3 main-btn">Reserve</a> -->
+                        </div>
+                    </form>
+
+                </div>
+            <?php endforeach; ?>
 
 
 
@@ -155,17 +144,25 @@ include './views/include/header.php';
 
 
 
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <script>
-        AOS.init({
-            duration: 10000,
-            delay: 200
-        });
-    </script>
+
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+            <script>
+                AOS.init({
+                    duration: 10000,
+                    delay: 200
+                });
+            </script>
+        </div>
 </body>
 
 </html>

@@ -4,7 +4,6 @@ session_start();
 
 require_once './boot.php';
 
-spl_autoload_register('autoload');
 
 function autoload($class_name){
 	$array_paths = array(
@@ -20,9 +19,10 @@ function autoload($class_name){
     // print_r($name);
 
 	foreach($array_paths as $path){
-		$file = sprintf($path.'%s.php',$name);
+		$file = sprintf($path.'%s.php', $name);
 		if(is_file($file)){
 			include_once $file;
 		}
 	}
 }
+spl_autoload_register('autoload');
